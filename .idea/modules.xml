@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/VwLibraryTask.iml" filepath="$PROJECT_DIR$/.idea/VwLibraryTask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/library.iml" filepath="$PROJECT_DIR$/core/library.iml" />
     </modules>
   </component>
 </project>
