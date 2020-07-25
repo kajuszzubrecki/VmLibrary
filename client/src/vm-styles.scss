@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$vw-library-primary: mat-palette($mat-amber);
+$vw-library-accent: mat-palette($mat-yellow, A200, A100, A400);
+$vw-library-warn:    mat-palette($mat-red);
+
+$vw-library-theme: mat-light-theme( $vw-library-primary,$vw-library-accent,$vw-library-warn);
+
+@include angular-material-theme($vw-library-theme);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-resevation',
+  selector: 'vw-resevation',
   templateUrl: './resevation.component.html',
   styleUrls: ['./resevation.component.scss']
 })
