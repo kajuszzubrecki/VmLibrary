@@ -6,6 +6,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
@@ -23,7 +24,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatIconModule,
     ReactiveFormsModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule
   ],
   exports: [
     MatMenuModule,
@@ -36,7 +38,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatIconModule,
     ReactiveFormsModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule
   ]
 })
 export class SharedModule {
