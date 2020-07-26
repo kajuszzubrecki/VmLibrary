@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
 import {HomeComponent} from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './login/login.component';
 
 @NgModule({
   imports: [
@@ -13,4 +12,5 @@ import { LoginComponent } from './login/login.component';
   declarations: [HomeComponent, LoginComponent],
   exports: [HomeComponent, LoginComponent]
 })
-export class CoreModule { }
+export class CoreModule {
+}

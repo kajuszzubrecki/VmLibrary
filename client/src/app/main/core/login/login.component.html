@@ -1,1 +1,36 @@
-<p>login works!</p>
+<mat-card class="login">
+  <mat-card-title>Log in</mat-card-title>
+  <mat-card-content>
+    <form layout="column" (ngSubmit)="login(loginForm.form)" #loginForm="ngForm">
+      <mat-form-field appearance="fill"
+      class="input">
+        <mat-label>Enter your login</mat-label>
+        <input matInput
+               type="text"
+               [placeholder]="'username'"
+               name="username"
+               ngModel
+               required>
+      </mat-form-field>
+      <mat-form-field appearance="fill"
+                      class="input">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"
+               [placeholder]="'password'"
+               name="password"
+               ngModel
+               required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <button mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!loginForm.form.valid"
+              class="input">
+        Log in
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

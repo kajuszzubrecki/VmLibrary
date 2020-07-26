@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
+  selector: 'vm-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+
+  /**
+   * Flag to hide password
+   */
+  hide = true;
+  password: string;
+  name: string;
 
   constructor() { }
 
-  ngOnInit() {
+  login(login: any) {
+    console.log(login.value.username, login.value.password);
   }
-
 }
