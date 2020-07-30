@@ -1,0 +1,13 @@
+/*
+class AbstractRestServicePaths {
+  public static servicesPath = 'will be set in core module in configurationInit function';
+}
+*/
+
+export class SharedRestServicePaths {
+
+  public CREATE_USER = 'create-user';
+
+/*  public static CREATE_USER() {
+    return AbstractRestServicePaths.servicesPath + 'create-user'; }*/
+}

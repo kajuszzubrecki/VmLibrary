@@ -30,9 +30,7 @@ import {UserModule} from './main/user/user.module';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [
-    HomeComponent,
-  ],
+  entryComponents: [],
   exports: [
 
   ]

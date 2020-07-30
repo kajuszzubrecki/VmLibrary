@@ -23,7 +23,7 @@ public class Reservation {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
-	private User user;
+	private UserEntity user;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_id")
@@ -45,11 +45,11 @@ public class Reservation {
 		this.id = id;
 	}
 
-	public User getUser() {
+	public UserEntity getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserEntity user) {
 		this.user = user;
 	}
 

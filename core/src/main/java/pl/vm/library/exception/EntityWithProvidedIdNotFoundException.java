@@ -4,7 +4,7 @@ package pl.vm.library.exception;
  * Exception used when trying to operate on Entities which don't exist in the
  * Database.
  */
-public class EntityWithProvidedIdNotFoundException extends RuntimeException {
+public class 	EntityWithProvidedIdNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 518405525882996153L;
 

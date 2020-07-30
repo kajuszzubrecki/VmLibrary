@@ -4,14 +4,14 @@
       <img class="logo" src="/../../../assets/logo.jpg"/>
     </div>
     <div class="buttons">
-      <button class="button" mat-raised-button color="primary">Sign in</button>
+      <button class="button" mat-raised-button color="primary" (click)="openSignInDialog()">Sign in</button>
       <button class="button" mat-raised-button color="primary" (click)="openLogInDialog()">Log in</button>
     </div>
   </div>
 
   <div class="content">
     <mat-grid-list cols="2" rowHeight="3:2">
-      <mat-grid-tile>
+      <mat-grid-tile                               >
         <div>
           <h3>What is Lorem Ipsum?</h3>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the

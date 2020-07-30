@@ -1,5 +1,7 @@
 package pl.vm.library.to;
 
+import lombok.EqualsAndHashCode;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,6 +11,7 @@ import javax.validation.constraints.Size;
 /**
  * Transport Object of the Book class.
  */
+@EqualsAndHashCode
 public class BookTo implements Serializable {
 
 	private static final long serialVersionUID = -3939153951563803292L;

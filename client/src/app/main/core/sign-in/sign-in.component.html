@@ -1,0 +1,73 @@
+<mat-card class="sign-in">
+  <mat-card-title>Sign in</mat-card-title>
+  <mat-card-content>
+    <form layout="column" (ngSubmit)="createAccount(signInForm.form)" #signInForm="ngForm">
+
+      <div class="names-section">
+        <mat-form-field appearance="fill"
+                        class="small-input float-right">
+
+          <mat-label>Enter your first name</mat-label>
+
+          <input matInput
+                 type="text"
+                 [placeholder]="'First Name'"
+                 name="firstName"
+                 ngModel
+                 required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"
+                        class="small-input">
+
+          <mat-label>Enter your last name</mat-label>
+          <input matInput
+                 type="text"
+                 [placeholder]="'Last Name'"
+                 name="lastName"
+                 ngModel
+                 required>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="fill"
+                      class="input">
+
+        <mat-label>Enter your email</mat-label>
+        <input matInput
+               placeholder="pati@buziaczek.com"
+               name="email"
+               ngModel
+               required
+               email>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"
+                      class="input">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"
+               [placeholder]="'password'"
+               name="password"
+               ngModel
+               required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-checkbox
+        name="regulations"
+        ngModel
+        required>
+        I accepts the Terms of Use & Privacy Policy
+      </mat-checkbox>
+      <button mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!signInForm.form.valid"
+              class="button">
+        Create account
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
