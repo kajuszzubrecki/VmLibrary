@@ -18,6 +18,5 @@ export class LoginComponent {
   constructor() { }
 
   login(login: any) {
-    console.log(login.value.username, login.value.password);
   }
 }

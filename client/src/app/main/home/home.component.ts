@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {PopUpService} from '../../shared/pop-up/pop-up.service';
-import {LoginComponent} from '../login/login.component';
-import {SignInComponent} from '../sign-in/sign-in.component';
+import {PopUpService} from '../shared/pop-up/pop-up.service';
+import {LoginComponent} from './login/login.component';
+import {SignInComponent} from './sign-in/sign-in.component';
 
 @Component({
   selector: 'vm-home',

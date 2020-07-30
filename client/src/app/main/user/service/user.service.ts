@@ -1,6 +1,7 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
+import {environment} from '../../../../environments/environment';
 import {UserTo} from '../../shared/to/UserTo';
 
 @Injectable({
@@ -12,10 +13,10 @@ export class UserService {
   }
 
   public createUser(userTo: UserTo): Observable<UserTo> {
-    return this.http.post<UserTo>('http://localhost:8080/users/create', userTo);
+    return this.http.post<UserTo>(`${environment.apiUrl}/users/create`, userTo);
   }
 
-  public isUserEmailAlreadyUsed(email: string): Observable<boolean>  {
-    return this.http.get<boolean>('http://localhost:8080/users/validateUserEmail/' + email);
+  public isUserEmailAlreadyUsed(email: string): Observable<boolean> {
+    return this.http.get<boolean>(`${environment.apiUrl}/users/authenticate` + email);
   }
 }

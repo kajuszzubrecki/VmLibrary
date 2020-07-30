@@ -7,8 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BookModule} from './main/book/book.module';
-import {CoreModule} from './main/core/core.module';
-import {HomeComponent} from './main/core/home/home.component';
+import {HomeModule} from './main/home/home.module';
 import {ReservationModule} from './main/resevation/reservation.module';
 import {UserModule} from './main/user/user.module';
 
@@ -25,8 +24,7 @@ import {UserModule} from './main/user/user.module';
     BookModule,
     ReservationModule,
     UserModule,
-    CoreModule,
-
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent],
