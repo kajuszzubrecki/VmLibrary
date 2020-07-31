@@ -1,60 +1,72 @@
 package pl.vm.library.rest.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import pl.vm.library.rest.work.work.UserRestController;
+import pl.vm.library.rest.UserRestController;
 import pl.vm.library.service.UserService;
 import pl.vm.library.to.UserAuthTo;
 import pl.vm.library.to.UserTo;
 
 import java.util.List;
 
-@RestController
-@CrossOrigin(origins = "http://localhost:4200")
+/**
+ * Implementation for UserRestController
+ */
 public class UserRestControllerImpl implements UserRestController {
 
   @Autowired
   private UserService userService;
 
-
+  /**
+   * Finds all users
+   *
+   * @return
+   */
   @Override
   public List<UserTo> findAll() {
     return userService.findAll();
   }
 
-  @ResponseStatus(HttpStatus.OK)
-  @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  /**
+   * Method finds user by ID
+   *
+   * @param id
+   * @return
+   */
   @Override
-  public UserTo findById(@PathVariable Long id) {
+  public UserTo findById(Long id) {
     return userService.findById(id);
   }
 
-  @ResponseStatus(HttpStatus.CREATED)
-  @PostMapping(value = "/users/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  /**
+   * Methods validates email
+   *
+   * @param email
+   * @return
+   */
   @Override
-  public UserTo create(@RequestBody UserTo user) {
-    return userService.create(user);
-  }
-
-  @ResponseStatus(HttpStatus.OK)
-  @GetMapping(value = "/users/validateUserEmail/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
-  @Override
-  public boolean validateMail(@PathVariable String email) {
+  public boolean validateMail(String email) {
     return userService.isUserEmailAlreadyUsed(email);
   }
 
-  @ResponseStatus(HttpStatus.CREATED)
-  @PostMapping(value = "users/authenticate", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  /**
+   * Methods creates new user
+   *
+   * @param user
+   * @return
+   */
   @Override
-  public UserTo isUserAuthenticated(@RequestBody UserAuthTo user) {
+  public UserTo create(UserTo user) {
+    return userService.create(user);
+  }
+
+  /**
+   * Methods checks if user is authenticated
+   *
+   * @param user
+   * @return
+   */
+  @Override
+  public UserTo isUserAuthenticated(UserAuthTo user) {
     return userService.isUserAuthenticated(user);
   }
 }

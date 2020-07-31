@@ -17,9 +17,7 @@ export class SignInComponent {
   /**
    * Flag to hide password
    */
-  hide = true;
-
-  signInWindowClosed = false;
+  isPasswordHidden = true;
 
   /**
    * Email form control

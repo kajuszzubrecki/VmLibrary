@@ -27,3 +27,23 @@
   display:flex;
   flex-direction:column;
 }
+
+.content {
+  display: flex;
+}
+
+.articles {
+  width: 50%;
+}
+
+.books {
+  flex-grow: 1;
+}
+
+.reservations {
+  flex-grow: 1;
+}
+
+.article {
+  padding: 25px;
+}

@@ -18,14 +18,20 @@ export class LoginComponent {
 
   constructor(private authService: AuthenticationService,
               private popUpService: PopUpService,
-              private dialogRef: MatDialogRef<LoginComponent>) {}
+              private dialogRef: MatDialogRef<LoginComponent>) {
+  }
 
+  /**
+   * Log in user
+   *
+   * @param data
+   */
   login(data: any) {
-   this.authService.login(data.value.email, data.value.password).pipe(first()).subscribe(user => {
+    this.authService.login(data.value.email, data.value.password).pipe(first()).subscribe(user => {
       if (user != null) {
         this.dialogRef.close(true);
       } else {
-        this.popUpService.showMessage("Login", "Invalid email or password. Please try again")
+        this.popUpService.showMessage('Login', 'Invalid email or password. Please try again :)')
       }
     });
   }

@@ -63,8 +63,8 @@ public class UserServiceImpl implements UserService {
   }
 
   private void validateNewUser(UserTo userTo) {
-		if (CollectionUtils.isNotEmpty(userTo.getReservations())) {
-			throw new ParameterValidationException("When creating new User the Reservation list should be initially empty.");
-		}
+    if (CollectionUtils.isNotEmpty(userTo.getReservations())) {
+      throw new ParameterValidationException("When creating new User the Reservation list should be initially empty.");
+    }
   }
 }

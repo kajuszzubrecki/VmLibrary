@@ -12,10 +12,19 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
+  /**
+   * Method creates new user
+   *
+   * @param userTo
+   */
   public createUser(userTo: UserTo): Observable<UserTo> {
     return this.http.post<UserTo>(`${environment.apiUrl}/users/create`, userTo);
   }
 
+  /**
+   * Method checks if email provided by user is available to create new account
+   * @param email
+   */
   public isUserEmailAlreadyUsed(email: string): Observable<boolean> {
     return this.http.get<boolean>(`${environment.apiUrl}/users/validateUserEmail/` + email);
   }
