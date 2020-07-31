@@ -1,7 +1,7 @@
 export class BookTo {
   id: number;
-/*  author: string;
+  author: string;
   title: string;
   isbn: string;
-  releaseDate: Date;*/
+  releaseDate: Date;
 }

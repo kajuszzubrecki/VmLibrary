@@ -13,8 +13,12 @@ import java.util.List;
  */
 public class UserRestControllerImpl implements UserRestController {
 
-  @Autowired
   private UserService userService;
+
+  @Autowired
+  public UserRestControllerImpl(UserService userService) {
+    this.userService = userService;
+  }
 
   /**
    * Finds all users

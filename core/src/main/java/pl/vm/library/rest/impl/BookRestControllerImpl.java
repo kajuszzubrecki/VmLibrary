@@ -12,8 +12,12 @@ import java.util.List;
  */
 public class BookRestControllerImpl implements BookRestController {
 
-  @Autowired
   private BookService bookService;
+
+  @Autowired
+  public BookRestControllerImpl(BookService bookService) {
+    this.bookService = bookService;
+  }
 
   @Override
   public List<BookTo> findAll() {
