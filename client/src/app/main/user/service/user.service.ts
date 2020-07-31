@@ -17,6 +17,6 @@ export class UserService {
   }
 
   public isUserEmailAlreadyUsed(email: string): Observable<boolean> {
-    return this.http.get<boolean>(`${environment.apiUrl}/users/authenticate` + email);
+    return this.http.get<boolean>(`${environment.apiUrl}/users/validateUserEmail/` + email);
   }
 }

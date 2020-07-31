@@ -1,7 +1,6 @@
-/*
 -- EXAMPLE USER DATA
-INSERT INTO user(email, last_name, password, name) VALUES ('johnny@doe.com', 'Doe', 'John', '12345678');
-INSERT INTO user(email, last_name, password, name) VALUES ('james@franco.com', 'Franco', 'James', '12345678');
+INSERT INTO USER(id ,email, last_name, password, name) VALUES (1,'johnny@doe.com', 'Doe', 'John', '12345678');
+INSERT INTO user(id ,email, last_name, password, name) VALUES (2,'james@franco.com', 'Franco', 'James', '12345678');
 
 -- EXAMPLE BOOK DATA
 INSERT INTO book(author, isbn, release_date, title) VALUES ('Joshua Bloch', '9780134685991', '2018-01-06 01:00:00', 'Effective Java 3rd Edition');
@@ -13,4 +12,4 @@ INSERT INTO book(author, isbn, release_date, title) VALUES ('Lasse Koskela', '97
 -- EXAMPLE RESERVATION DATA
 INSERT INTO reservation(user_id, book_id, from_date, to_date) VALUES (1, 1, '2018-12-30 01:00:00', '2019-01-30 01:00:00');
 INSERT INTO reservation(user_id, book_id, from_date, to_date) VALUES (1, 2, '2018-12-15 01:00:00', '2019-01-15 01:00:00');
-INSERT INTO reservation(user_id, book_id, from_date, to_date) VALUES (2, 5, '2018-12-23 01:00:00', '2019-02-23 01:00:00');*/
+INSERT INTO reservation(user_id, book_id, from_date, to_date) VALUES (2, 5, '2018-12-23 01:00:00', '2019-02-23 01:00:00');

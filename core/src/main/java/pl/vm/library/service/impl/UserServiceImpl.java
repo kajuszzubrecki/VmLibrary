@@ -1,12 +1,15 @@
 package pl.vm.library.service.impl;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.vm.library.entity.UserEntity;
 import pl.vm.library.exception.EntityWithProvidedIdNotFoundException;
+import pl.vm.library.exception.ParameterValidationException;
 import pl.vm.library.repository.UserRepository;
 import pl.vm.library.service.UserService;
+import pl.vm.library.to.UserAuthTo;
 import pl.vm.library.to.UserTo;
 
 import javax.transaction.Transactional;
@@ -53,15 +56,15 @@ public class UserServiceImpl implements UserService {
     return userRepository.isUserEmailAlreadyUsed(email) != null;
   }
 
-  private void validateNewUser(UserTo userTo) {
-/*		if (userTo.getId() != null) {
-			throw new ParameterValidationException("When creating new User, the ID should be null.");
-		}*/
-
-/*		if (CollectionUtils.isNotEmpty(userTo.getReservations())) {
-			throw new ParameterValidationException(
-					"When creating new User the Reservation list should be initially empty.");
-		}*/
+  @Override
+  public UserTo isUserAuthenticated(UserAuthTo user) {
+    UserEntity userEntity = userRepository.isUserAuthenticated(user.getEmail(), user.getPassword());
+    return mapper.map(userEntity, UserTo.class);
   }
 
+  private void validateNewUser(UserTo userTo) {
+		if (CollectionUtils.isNotEmpty(userTo.getReservations())) {
+			throw new ParameterValidationException("When creating new User the Reservation list should be initially empty.");
+		}
+  }
 }

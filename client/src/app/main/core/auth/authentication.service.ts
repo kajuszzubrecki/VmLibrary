@@ -1,8 +1,9 @@
 import {HttpClient} from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {environment} from '../../../../environments/environment';
+import {UserAuthTo} from '../../shared/to/UserAuthTo';
 import {UserTo} from '../../shared/to/UserTo';
 
 @Injectable({
@@ -21,17 +22,34 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(username: string, password: string) {
-    return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
-      .pipe(map(user => {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
-      }));
+  /**
+   * Method to log the user
+   *
+   * @param email
+   * @param password
+   */
+  login(email: string, password?: string): Observable<UserTo> {
+    const userAuthTo = new UserAuthTo();
+    userAuthTo.email = email;
+    userAuthTo.password = password;
+    if (password != 'undefined') {
+      return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, userAuthTo)
+        .pipe(map(user => {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+          return user;
+        }));
+    } else {
+      localStorage.setItem('currentUser', JSON.stringify({name: email}));
+      this.currentUserSubject.next({name: email} as UserTo);
+      return of({name: email} as UserTo);
+    }
   }
 
+  /**
+   * Method logs out the user
+   */
   logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }

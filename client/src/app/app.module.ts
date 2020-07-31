@@ -10,11 +10,13 @@ import {BookModule} from './main/book/book.module';
 import {HomeModule} from './main/home/home.module';
 import {ReservationModule} from './main/resevation/reservation.module';
 import {UserModule} from './main/user/user.module';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

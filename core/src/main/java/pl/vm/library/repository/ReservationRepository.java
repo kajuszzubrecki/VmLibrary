@@ -2,8 +2,11 @@ package pl.vm.library.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import pl.vm.library.entity.Reservation;
+import pl.vm.library.entity.ReservationEntity;
 
-public interface ReservationRepository extends CrudRepository<Reservation, Long> {
+/**
+ * The interface Reservation repository.
+ */
+public interface ReservationRepository extends CrudRepository<ReservationEntity, Long> {
 
 }

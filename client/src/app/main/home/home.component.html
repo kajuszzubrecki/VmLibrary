@@ -4,14 +4,15 @@
       <img class="logo" src="/../../../assets/logo.jpg"/>
     </div>
     <div class="buttons">
-      <button class="button" mat-raised-button color="primary" (click)="openSignInDialog()">Sign in</button>
-      <button class="button" mat-raised-button color="primary" (click)="openLogInDialog()">Log in</button>
+      <button *ngIf="!isUserLogged" class="button" mat-raised-button color="primary" (click)="openSignInDialog()">Sign in</button>
+      <button *ngIf="!isUserLogged" class="button" mat-raised-button color="primary" (click)="openLogInDialog()">Log in</button>
+      <button *ngIf="isUserLogged" class="button" mat-raised-button color="primary" (click)="logOut()">Log out</button>
     </div>
   </div>
 
-  <div class="content">
+  <div class="content" *ngIf="!isUserLogged">
     <mat-grid-list cols="2" rowHeight="3:2">
-      <mat-grid-tile                               >
+      <mat-grid-tile>
         <div>
           <h3>What is Lorem Ipsum?</h3>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
@@ -60,5 +61,13 @@
         </div>
       </mat-grid-tile>
     </mat-grid-list>
+  </div>
+  <div class="user-dashboard" *ngIf="isUserLogged">
+    <div class="reservations">
+      <a>reservations</a>
+    </div>
+    <div class="available-books">
+      <a>available-books</a>
+    </div>
   </div>
 </div>

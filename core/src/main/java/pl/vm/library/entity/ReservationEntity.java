@@ -1,5 +1,9 @@
 package pl.vm.library.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.Instant;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,12 +14,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "reservation")
-public class Reservation {
+@Getter
+@Setter
+public class ReservationEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,53 +34,15 @@ public class Reservation {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_id")
-	private Book book;
+	private BookEntity book;
 
 	@Column
 	@NotNull
-	private Date fromDate;
+	private Instant fromDate;
 
 	@Column
 	@NotNull
-	private Date toDate;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public UserEntity getUser() {
-		return user;
-	}
-
-	public void setUser(UserEntity user) {
-		this.user = user;
-	}
-
-	public Book getBook() {
-		return book;
-	}
-
-	public void setBook(Book book) {
-		this.book = book;
-	}
-
-	public Date getFromDate() {
-		return fromDate;
-	}
-
-	public void setFromDate(Date fromDate) {
-		this.fromDate = fromDate;
-	}
-
-	public Date getToDate() {
-		return toDate;
-	}
-
-	public void setToDate(Date toDate) {
-		this.toDate = toDate;
-	}
+	private Instant toDate;
 }
+
+

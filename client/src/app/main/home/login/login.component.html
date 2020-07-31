@@ -4,24 +4,24 @@
     <form layout="column" (ngSubmit)="login(loginForm.form)" #loginForm="ngForm">
       <mat-form-field appearance="fill"
       class="input">
-        <mat-label>Enter your login</mat-label>
+        <mat-label>Enter your email</mat-label>
         <input matInput
                type="text"
-               [placeholder]="'username'"
-               name="username"
+               [placeholder]="'email'"
+               name="email"
                ngModel
                required>
       </mat-form-field>
       <mat-form-field appearance="fill"
                       class="input">
         <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'"
+        <input matInput [type]="isPasswordNotVisible ? 'password' : 'text'"
                [placeholder]="'password'"
                name="password"
                ngModel
                required>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <button mat-icon-button matSuffix (click)="isPasswordNotVisible = !isPasswordNotVisible" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="isPasswordNotVisible">
+          <mat-icon>{{isPasswordNotVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
       <button mat-raised-button

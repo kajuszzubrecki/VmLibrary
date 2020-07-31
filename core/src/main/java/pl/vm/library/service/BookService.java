@@ -11,30 +11,31 @@ public interface BookService {
 
 	/**
 	 * Returns all Books.
-	 * 
+	 *
 	 * @return all Books
 	 */
 	public List<BookTo> findAll();
 
 	/**
 	 * Returns the Book with the given ID.
-	 * 
+	 *
+	 * @param id the id
 	 * @return the found Book
 	 */
 	public BookTo findById(Long id);
 
 	/**
 	 * Creates a new Entity for the given object.
-	 * 
-	 * @param BookTo
+	 *
+	 * @param book the book
 	 * @return the persisted Book
 	 */
 	public BookTo create(BookTo book);
 
 	/**
 	 * Deletes the Book with the given id.
-	 * 
-	 * @param BookTo
+	 *
+	 * @param id the id
 	 * @return the persisted Book
 	 */
 	public void delete(Long id);

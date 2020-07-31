@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Component} from '@angular/core';
+import {MatDialogRef} from '@angular/material/dialog';
+import {first} from 'rxjs/operators';
+import {AuthenticationService} from '../../core/auth/authentication.service';
+import {PopUpService} from '../../shared/pop-up/pop-up.service';
 
 @Component({
   selector: 'vm-login',
@@ -11,12 +14,19 @@ export class LoginComponent {
   /**
    * Flag to hide password
    */
-  hide = true;
-  password: string;
-  name: string;
+  isPasswordNotVisible = true;
 
-  constructor() { }
+  constructor(private authService: AuthenticationService,
+              private popUpService: PopUpService,
+              private dialogRef: MatDialogRef<LoginComponent>) {}
 
-  login(login: any) {
+  login(data: any) {
+   this.authService.login(data.value.email, data.value.password).pipe(first()).subscribe(user => {
+      if (user != null) {
+        this.dialogRef.close(true);
+      } else {
+        this.popUpService.showMessage("Login", "Invalid email or password. Please try again")
+      }
+    });
   }
 }

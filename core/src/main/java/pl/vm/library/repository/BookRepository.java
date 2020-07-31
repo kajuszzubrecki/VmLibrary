@@ -2,8 +2,11 @@ package pl.vm.library.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import pl.vm.library.entity.Book;
+import pl.vm.library.entity.BookEntity;
 
-public interface BookRepository extends CrudRepository<Book, Long> {
+/**
+ * The interface Book repository.
+ */
+public interface BookRepository extends CrudRepository<BookEntity, Long> {
 
 }
