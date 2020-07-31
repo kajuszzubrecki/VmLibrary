@@ -3,7 +3,7 @@
   <mat-card-content>
     <form layout="column" (ngSubmit)="login(loginForm.form)" #loginForm="ngForm">
       <mat-form-field appearance="fill"
-      class="input">
+                      class="input">
         <mat-label>Enter your email</mat-label>
         <input matInput
                type="text"
@@ -20,7 +20,8 @@
                name="password"
                ngModel
                required>
-        <button mat-icon-button matSuffix (click)="isPasswordNotVisible = !isPasswordNotVisible" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="isPasswordNotVisible">
+        <button mat-icon-button matSuffix (click)="isPasswordNotVisible = !isPasswordNotVisible" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="isPasswordNotVisible">
           <mat-icon>{{isPasswordNotVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>

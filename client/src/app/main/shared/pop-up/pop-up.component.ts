@@ -8,9 +8,20 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class PopUpComponent {
 
+  /**
+   * PopUp title
+   */
   title: string;
+
+  /**
+   * Message to show
+   */
   message: string;
 
+  /**
+   * PopUpComponent constructor
+   * @param data
+   */
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.title = data.title;
     this.message = data.message;

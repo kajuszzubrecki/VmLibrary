@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from './main/core/auth-guard/auth.guard';
-import {DashboardComponent} from './main/dashboard/dashboard.component';
 import {HomeComponent} from './main/home/home.component';
 import {LoginComponent} from './main/home/login/login.component';
 
@@ -9,13 +8,11 @@ const routes: Routes = [
   {
     path: 'home', component: HomeComponent,
     // canActivate: [AuthGuard],
-    //children: [],
   },
-  {
-    path: 'home', component: DashboardComponent,
+/*  {
+    path: 'mybooks', component: MyBooks, //todo implement new component to show AuthGuard in action
     canActivate: [AuthGuard],
-    //children: [],
-  },
+  },*/
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home'}
 ];

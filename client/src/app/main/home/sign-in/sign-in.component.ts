@@ -7,6 +7,9 @@ import {PopUpService} from '../../shared/pop-up/pop-up.service';
 import {UserTo} from '../../shared/to/UserTo';
 import {UserService} from '../../user/service/user.service';
 
+/**
+ * SignInComponent for user with account
+ */
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -35,10 +38,13 @@ export class SignInComponent {
   createAccount(data: any) {
     const userEto = this.prepareUser(data.value.firstName, data.value.lastName, data.value.email, data.value.password);
 
-    const isEmailInvalid = this.emailRegex.test(String(data.value.email).toLowerCase());
+    const isEmailValid = this.emailRegex.test(String(data.value.email).toLowerCase());
 
-    if (isEmailInvalid) {
+
+    if (isEmailValid) {
       this.createUserIfEmailIsFree(data, userEto);
+    } else {
+      this.popUpService.showMessage('Email', 'Invalid email format');
     }
   }
 

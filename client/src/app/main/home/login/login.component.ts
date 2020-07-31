@@ -16,6 +16,12 @@ export class LoginComponent {
    */
   isPasswordNotVisible = true;
 
+  /**
+   * LoginComponent constructor
+   * @param authService
+   * @param popUpService
+   * @param dialogRef
+   */
   constructor(private authService: AuthenticationService,
               private popUpService: PopUpService,
               private dialogRef: MatDialogRef<LoginComponent>) {

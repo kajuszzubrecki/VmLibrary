@@ -25,6 +25,11 @@ export class HomeComponent implements OnInit {
    */
   books$: Observable<BookTo[]>;
 
+  /**
+   * Reserved books
+   */
+  reservedBooks$: Observable<BookTo[]>;
+
   constructor(public loginComponent: MatDialog,
               private popUpService: PopUpService,
               private authService: AuthenticationService,
@@ -66,6 +71,7 @@ export class HomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(authenticated => {
       if (authenticated) {
         this.isUserLogged = true;
+        this.reservedBooks$ = this.booksService.findAllBooks(); //todo to implement
       }
     });
   }

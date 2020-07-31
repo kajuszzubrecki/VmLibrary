@@ -1,7 +1,15 @@
 package pl.vm.library.rest.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.vm.library.rest.UserRestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import pl.vm.library.service.UserService;
 import pl.vm.library.to.UserAuthTo;
 import pl.vm.library.to.UserTo;
@@ -11,7 +19,10 @@ import java.util.List;
 /**
  * Implementation for UserRestController
  */
-public class UserRestControllerImpl implements UserRestController {
+@RestController
+//@RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:4200")
+public class UserRestControllerImpl {
 
   private UserService userService;
 
@@ -25,7 +36,8 @@ public class UserRestControllerImpl implements UserRestController {
    *
    * @return
    */
-  @Override
+  @ResponseStatus(HttpStatus.OK)
+  @GetMapping(value = "/users/", produces = MediaType.APPLICATION_JSON_VALUE)
   public List<UserTo> findAll() {
     return userService.findAll();
   }
@@ -36,8 +48,9 @@ public class UserRestControllerImpl implements UserRestController {
    * @param id
    * @return
    */
-  @Override
-  public UserTo findById(Long id) {
+  @ResponseStatus(HttpStatus.OK)
+  @GetMapping(value = "/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public UserTo findById(@PathVariable Long id) {
     return userService.findById(id);
   }
 
@@ -47,8 +60,9 @@ public class UserRestControllerImpl implements UserRestController {
    * @param email
    * @return
    */
-  @Override
-  public boolean validateMail(String email) {
+  @ResponseStatus(HttpStatus.CREATED)
+  @PostMapping(value = "/users/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  public boolean validateMail(@PathVariable String email) {
     return userService.isUserEmailAlreadyUsed(email);
   }
 
@@ -58,8 +72,9 @@ public class UserRestControllerImpl implements UserRestController {
    * @param user
    * @return
    */
-  @Override
-  public UserTo create(UserTo user) {
+  @ResponseStatus(HttpStatus.OK)
+  @GetMapping(value = "/users/validateUserEmail/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public UserTo create(@RequestBody UserTo user) {
     return userService.create(user);
   }
 
@@ -69,8 +84,9 @@ public class UserRestControllerImpl implements UserRestController {
    * @param user
    * @return
    */
-  @Override
-  public UserTo isUserAuthenticated(UserAuthTo user) {
+  @ResponseStatus(HttpStatus.CREATED)
+  @PostMapping(value = "/users/authenticate", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  public UserTo isUserAuthenticated(@RequestBody UserAuthTo user) {
     return userService.isUserAuthenticated(user);
   }
 }

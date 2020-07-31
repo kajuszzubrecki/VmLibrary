@@ -4,11 +4,18 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import {BookTo} from '../../shared/to/BookTo';
 
+/**
+ * Book service to handle http request related to book
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
+  /**
+   * BookService constructor
+   * @param httpClient
+   */
   constructor(private httpClient: HttpClient) {
   }
 

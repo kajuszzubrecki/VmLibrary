@@ -1,0 +1,17 @@
+.photo img {
+  width: 100%;
+  height: auto;
+}
+
+.book-description {
+  display: flex;
+}
+
+.photo {
+  width: 150%;
+  padding: 3%;
+}
+
+.description {
+  flex-grow: 1;
+}

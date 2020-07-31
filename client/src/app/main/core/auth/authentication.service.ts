@@ -6,13 +6,21 @@ import {environment} from '../../../../environments/environment';
 import {UserAuthTo} from '../../shared/to/UserAuthTo';
 import {UserTo} from '../../shared/to/UserTo';
 
+/**
+ * AuthenticationService
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+
   private currentUserSubject: BehaviorSubject<UserTo>;
   public currentUser: Observable<UserTo>;
 
+  /**
+   * AuthenticationService constructor
+   * @param http
+   */
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<UserTo>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();

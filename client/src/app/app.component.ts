@@ -9,9 +9,5 @@ export class AppComponent implements OnInit{
   title = 'LibraryApplication';
 
   ngOnInit(): void {
-
-    console.log("hej");
   }
-
-
 }

@@ -2,13 +2,11 @@
   <mat-card-title>Sign in</mat-card-title>
   <mat-card-content>
     <form layout="column" (ngSubmit)="createAccount(signInForm.form)" #signInForm="ngForm">
-
       <div class="names-section">
         <mat-form-field appearance="fill"
                         class="small-input float-right">
 
           <mat-label>Enter your first name</mat-label>
-
           <input matInput
                  type="text"
                  [placeholder]="'First Name'"
@@ -16,10 +14,8 @@
                  ngModel
                  required>
         </mat-form-field>
-
         <mat-form-field appearance="fill"
                         class="small-input">
-
           <mat-label>Enter your last name</mat-label>
           <input matInput
                  type="text"
@@ -29,10 +25,8 @@
                  required>
         </mat-form-field>
       </div>
-
       <mat-form-field appearance="fill"
                       class="input">
-
         <mat-label>Enter your email</mat-label>
         <input matInput
                placeholder="pati@buziaczek.com"
@@ -42,7 +36,6 @@
                email>
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
-
       <mat-form-field appearance="fill"
                       class="input">
         <mat-label>Enter your password</mat-label>
@@ -51,7 +44,8 @@
                name="password"
                ngModel
                required>
-        <button mat-icon-button matSuffix (click)="isPasswordHidden = !isPasswordHidden" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="isPasswordHidden">
+        <button mat-icon-button matSuffix (click)="isPasswordHidden = !isPasswordHidden" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="isPasswordHidden">
           <mat-icon>{{isPasswordHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
