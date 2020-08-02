@@ -40,7 +40,6 @@ export class SignInComponent {
 
     const isEmailValid = this.emailRegex.test(String(data.value.email).toLowerCase());
 
-
     if (isEmailValid) {
       this.createUserIfEmailIsFree(data, userEto);
     } else {
@@ -53,7 +52,7 @@ export class SignInComponent {
       if (!isUserEmailAlreadyUsed) {
         this.userService.createUser(userTo).subscribe(userTo => {
           this.authService.login(userTo.email);
-          this.dialogRef.close();
+          this.dialogRef.close(true);
         });
       } else {
         this.popUpService.showMessage('Email', 'Account with this email already created');

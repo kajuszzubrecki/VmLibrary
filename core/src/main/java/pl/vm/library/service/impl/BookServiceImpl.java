@@ -13,14 +13,19 @@ import pl.vm.library.to.BookTo;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class BookServiceImpl implements BookService {
 
-  @Autowired
   private BookRepository bookRepository;
+
+  @Autowired
+  public BookServiceImpl(BookRepository bookRepository) {
+    this.bookRepository = bookRepository;
+  }
 
   private ModelMapper mapper = new ModelMapper();
 

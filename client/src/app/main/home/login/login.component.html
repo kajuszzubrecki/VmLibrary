@@ -20,7 +20,9 @@
                name="password"
                ngModel
                required>
-        <button mat-icon-button matSuffix (click)="isPasswordNotVisible = !isPasswordNotVisible" [attr.aria-label]="'Hide password'"
+        <button mat-icon-button matSuffix
+                (click)="isPasswordNotVisible = !isPasswordNotVisible"
+                [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="isPasswordNotVisible">
           <mat-icon>{{isPasswordNotVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>

@@ -1,6 +1,7 @@
 package pl.vm.library.exception;
 
 import java.text.MessageFormat;
+import java.util.EmptyStackException;
 
 /**
  * The type Reserved book can not be deleted.
@@ -12,10 +13,23 @@ public class ReservedBookCanNotBeDeletedException extends RuntimeException {
   /**
    * Throws an exception that gaven book id is already reserved and can not be deleted
    *
-   * @param id the id
    */
-  public ReservedBookCanNotBeDeletedException(Long id) {
-    String message = MessageFormat.format("Book with id: {0} is reserved and can not be deleted", id);
-    throw new EntityWithProvidedIdNotFoundException(message);
+  public ReservedBookCanNotBeDeletedException() {
+    throw new EmptyStackException();
   }
+
+  /**
+   * Throws an EntityWithProvidedIdNotFoundException with given message
+   *
+   * @param message the message
+   */
+  public ReservedBookCanNotBeDeletedException(String message) {
+    super(message);
+  }
+
+  public ReservedBookCanNotBeDeletedException(Long id) {
+    String message = MessageFormat.format("The Book with the given id: {0} is reserved and cannot be deleted", id);
+    throw new ReservedBookCanNotBeDeletedException(message);
+  }
+
 }

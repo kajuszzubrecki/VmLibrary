@@ -11,21 +11,11 @@ import pl.vm.library.entity.UserEntity;
 public interface UserRepository extends CrudRepository<UserEntity, Long> {
 
   /**
-   * Is user email already used user entity.
-   *
-   * @param email the email
-   * @return the user entity
-   */
-  @Query("Select user from UserEntity user where user.email =:email")
-  UserEntity isUserEmailAlreadyUsed(@Param("email") String email);
-
-  /**
    * Is user authenticated user to.
    *
-   * @param email    the email
-   * @param password the password
+   * @param email the email
    * @return the user to
    */
-  @Query("Select user from UserEntity user where user.email =:email and user.password =:password")
-  UserEntity isUserAuthenticated(@Param("email") String email, @Param("password") String password);
+  @Query("Select user from UserEntity user where user.email =:email")
+  UserEntity getUserByEmail(@Param("email") String email);
 }

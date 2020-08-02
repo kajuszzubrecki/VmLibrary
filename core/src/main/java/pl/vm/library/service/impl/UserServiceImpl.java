@@ -3,6 +3,7 @@ package pl.vm.library.service.impl;
 import org.apache.commons.collections4.CollectionUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.vm.library.entity.UserEntity;
 import pl.vm.library.exception.EntityWithProvidedIdNotFoundException;
@@ -20,8 +21,15 @@ import java.util.stream.Collectors;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-  @Autowired
   private UserRepository userRepository;
+
+  private PasswordEncoder passwordEncoder;
+
+  @Autowired
+  public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    this.userRepository = userRepository;
+    this.passwordEncoder = passwordEncoder;
+  }
 
   private ModelMapper mapper = new ModelMapper();
 
@@ -46,6 +54,7 @@ public class UserServiceImpl implements UserService {
     validateNewUser(userTo);
 
     UserEntity userEntity = mapper.map(userTo, UserEntity.class);
+    userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
     userEntity = userRepository.save(userEntity);
 
     return mapper.map(userEntity, UserTo.class);
@@ -53,13 +62,25 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public boolean isUserEmailAlreadyUsed(String email) {
-    return userRepository.isUserEmailAlreadyUsed(email) != null;
+    return userRepository.getUserByEmail(email) != null;
   }
 
   @Override
   public UserTo isUserAuthenticated(UserAuthTo user) {
-    UserEntity userEntity = userRepository.isUserAuthenticated(user.getEmail(), user.getPassword());
-    return mapper.map(userEntity, UserTo.class);
+    UserEntity userEntity = userRepository.getUserByEmail(user.getEmail());
+
+    if (userEntity != null) {
+      String encodedPassword = userEntity.getPassword();
+      return passwordEncoder.matches(user.getPassword(), encodedPassword) ? prepareUserToReturn(userEntity) : null;
+    } else {
+      return null;
+    }
+  }
+
+  private UserTo prepareUserToReturn(UserEntity userEntity) {
+    UserTo userTo = mapper.map(userEntity, UserTo.class);
+    userTo.setPassword(null);
+    return userTo;
   }
 
   private void validateNewUser(UserTo userTo) {

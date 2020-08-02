@@ -1,5 +1,6 @@
 package pl.vm.library.service;
 
+import pl.vm.library.to.ReservationExtensionTo;
 import pl.vm.library.to.ReservationTo;
 
 import java.time.Instant;
@@ -8,7 +9,6 @@ import java.time.Instant;
  * The Service which contains business logic for Reservation.
  */
 public interface ReservationService {
-
 
   /**
    * Create new reservation reservation to.
@@ -21,9 +21,8 @@ public interface ReservationService {
   /**
    * Extend reservation reservation to.
    *
-   * @param reservationId the reservation id
-   * @param newToDate     the new to date
+   * @param reservationExtensionTo the reservation extension to
    * @return the reservation to
    */
-  ReservationTo extendReservation(Long reservationId, Instant newToDate);
+  ReservationTo extendReservation(ReservationExtensionTo reservationExtensionTo);
 }

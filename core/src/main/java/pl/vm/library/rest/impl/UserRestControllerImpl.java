@@ -21,7 +21,7 @@ import java.util.List;
  */
 @RestController
 //@RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserRestControllerImpl {
 
   private UserService userService;
@@ -60,8 +60,8 @@ public class UserRestControllerImpl {
    * @param email
    * @return
    */
-  @ResponseStatus(HttpStatus.CREATED)
-  @PostMapping(value = "/users/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseStatus(HttpStatus.OK)
+  @GetMapping(value = "/users/validateUserEmail/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
   public boolean validateMail(@PathVariable String email) {
     return userService.isUserEmailAlreadyUsed(email);
   }
@@ -72,8 +72,8 @@ public class UserRestControllerImpl {
    * @param user
    * @return
    */
-  @ResponseStatus(HttpStatus.OK)
-  @GetMapping(value = "/users/validateUserEmail/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseStatus(HttpStatus.CREATED)
+  @PostMapping(value = "/users/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   public UserTo create(@RequestBody UserTo user) {
     return userService.create(user);
   }
@@ -84,7 +84,7 @@ public class UserRestControllerImpl {
    * @param user
    * @return
    */
-  @ResponseStatus(HttpStatus.CREATED)
+  @ResponseStatus(HttpStatus.OK)
   @PostMapping(value = "/users/authenticate", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   public UserTo isUserAuthenticated(@RequestBody UserAuthTo user) {
     return userService.isUserAuthenticated(user);

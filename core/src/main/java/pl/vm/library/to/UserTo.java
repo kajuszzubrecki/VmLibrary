@@ -1,9 +1,8 @@
 package pl.vm.library.to;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import pl.vm.library.facade.User;
 
 import javax.validation.constraints.Email;
@@ -19,12 +18,11 @@ import java.util.List;
  * Contains also the Reservation list of the given User.
  */
 
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
+@NoArgsConstructor
 public class UserTo implements Serializable, User {
 
-  private static final long serialVersionUID = 5327766680748073213L;
+  private static final long serialVersionUID = 5327766680348073213L;
 
   private Long id;
 

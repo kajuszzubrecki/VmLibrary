@@ -1,7 +1,9 @@
 package pl.vm.library.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import pl.vm.library.common.AbstractEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,13 +19,12 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "reservation")
-@Getter
-@Setter
-public class ReservationEntity {
+@Data
+public class ReservationEntity extends AbstractEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  protected Long id;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")

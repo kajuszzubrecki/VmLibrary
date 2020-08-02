@@ -1,6 +1,9 @@
 package pl.vm.library.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import pl.vm.library.common.AbstractEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,12 +20,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "USER")
-@Data
-public class UserEntity {
+@Getter
+@Setter
+public class UserEntity extends AbstractEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  protected Long id;
 
   @Column
   @NotNull
